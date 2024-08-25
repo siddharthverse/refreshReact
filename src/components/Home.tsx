@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import TrendingJobsList from './TrendingJobsList';
+import SearchJobs from './SearchJobs';
 
 const Home = () => {
   const trendingJobsArray = [
@@ -19,7 +20,17 @@ const Home = () => {
     { id: number; title: string; category: string; openings: string }[]
   >([]);
 
-  const handleSearchClick = () => {
+  const [searchJobs, setSearchJobs] = useState<
+    {
+      id: number;
+      title: string;
+      category: string;
+      openings: string;
+    }[]
+  >([]);
+
+  const handleSearchJobs = () => {
+    setSearchJobs(trendingJobsArray);
     console.log('Search button clicked');
   };
 
@@ -29,7 +40,7 @@ const Home = () => {
     console.log('Show trending jobs button clicked');
   };
 
-  const searchJobTitle = (
+  const searchTechJobs = (
     jobTitle: string,
     e: React.MouseEvent<HTMLButtonElement>
   ) => {
@@ -40,9 +51,9 @@ const Home = () => {
   return (
     <div className="home">
       <h1>Find Jobs!</h1>
-      <button onClick={handleSearchClick}>Search</button>
-      <button onClick={handleShowTrendingJobs}>Trending Jobs</button>
-      <button onClick={(e) => searchJobTitle('tech', e)}>
+      <button onClick={handleSearchJobs}>Search</button>
+      <button onClick={handleShowTrendingJobs}>Show Trending Jobs</button>
+      <button onClick={(e) => searchTechJobs('tech', e)}>
         Search Tech Jobs
       </button>
       <TrendingJobsList trendingJobs={trendingJobs} listTitle="Trending Jobs" />
@@ -56,6 +67,7 @@ const Home = () => {
         )}
         listTitle="Finance Jobs"
       />
+      <SearchJobs jobs={searchJobs} title="Search Results" />
     </div>
   );
 };
