@@ -57,11 +57,19 @@ body {
 }
 
 
-.trendingJobsList .title {
-  color: #e5c07b
+.trendingJobsList .jobTitle {
+  color: #e5c07b;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1.5px;
+  margin-right: 10px; /* Add margin to the right */
 }
 
-.trendingJobsList h3 {
+.trendingJobsList .title  {
   color: #569cd6
 }
 
+
+.trendingJobsList .jobVacancies  {
+  color: #97c278
+}

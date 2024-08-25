@@ -1,6 +1,7 @@
 interface Job {
   id: number;
   title: string;
+  category: string;
   openings: string;
 }
 
@@ -9,16 +10,17 @@ interface TrendingJobsListProps {
   listTitle: string;
 }
 
-const TrendingJobsList = (props: TrendingJobsListProps) => {
+const TrendingJobsList = ({
+  trendingJobs,
+  listTitle,
+}: TrendingJobsListProps) => {
   return (
     <div className="trendingJobsList">
-      <h2 className="title">{props.listTitle}</h2>
-      {props.trendingJobs.map((job) => (
+      <h2 className="title">{listTitle}</h2>
+      {trendingJobs.map((job) => (
         <div key={job.id}>
-          <h3>{job.title}</h3>
-          <span>{job.openings} jobs</span>
-          <br />
-          <span>------------</span>
+          <span className="jobTitle">{job.title}</span>
+          <span className="jobVacancies">{job.openings} jobs</span>
         </div>
       ))}
     </div>
