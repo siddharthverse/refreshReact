@@ -50,7 +50,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <h1>Find Jobs!</h1>
+      <h1>The best jobs on the planet.</h1>
       <button onClick={handleSearchJobs}>Search</button>
       <button onClick={handleShowTrendingJobs}>Show Trending Jobs</button>
       <button onClick={(e) => searchTechJobs('tech', e)}>
