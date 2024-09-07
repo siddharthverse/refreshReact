@@ -16,18 +16,23 @@ const Home = () => {
     { id: 5, title: 'Credit Card', category: 'finance', openings: '50' },
   ];
 
-  const [trendingJobs, setTrendingJobs] = useState<
-    { id: number; title: string; category: string; openings: string }[]
-  >([]);
+  type TrendingJobsType = {
+    id: number;
+    title: string;
+    category: string;
+    openings: string;
+  };
 
-  const [searchJobs, setSearchJobs] = useState<
-    {
-      id: number;
-      title: string;
-      category: string;
-      openings: string;
-    }[]
-  >([]);
+  type SearchJobsType = {
+    id: number;
+    title: string;
+    category: string;
+    openings: string;
+  };
+
+  const [trendingJobs, setTrendingJobs] = useState<TrendingJobsType[]>([]);
+
+  const [searchJobs, setSearchJobs] = useState<SearchJobsType[]>([]);
 
   const handleSearchJobs = () => {
     setSearchJobs(trendingJobsArray);
@@ -53,13 +58,11 @@ const Home = () => {
       <h1>The best jobs on the planet.</h1>
       <button onClick={handleSearchJobs}>Search</button>
       <button onClick={handleShowTrendingJobs}>Show Trending Jobs</button>
-      <button onClick={(e) => searchTechJobs('tech', e)}>
-        Search Tech Jobs
-      </button>
+      <button onClick={(e) => searchTechJobs('tech', e)}>Show Tech Jobs</button>
       <TrendingJobsList trendingJobs={trendingJobs} listTitle="Trending Jobs" />
       <TrendingJobsList
         trendingJobs={trendingJobs.filter((jobs) => jobs.category === 'tech')}
-        listTitle="Tech Jobs"
+        listTitle="Show Tech Jobs"
       />
       <TrendingJobsList
         trendingJobs={trendingJobs.filter(
