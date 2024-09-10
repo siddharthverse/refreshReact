@@ -3,6 +3,7 @@ import './App.css';
 import Fruits from './components/Learn/Fruits';
 // import Home from './components/Home';
 import Navbar from './components/Navbar';
+import Board from './components/TicTacToe/Board';
 // import VideoPlayer from './components/VideoPlayer';
 
 function App() {
@@ -18,6 +19,14 @@ function App() {
   return (
     <>
       <Navbar />
+      <br />
+      <Board />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+
       {/* <Home /> */}
       {/* <VideoPlayer /> */}
       <Fruits
