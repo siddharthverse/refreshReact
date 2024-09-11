@@ -1,10 +1,6 @@
 import { useState } from 'react';
 import './../../Square.css';
 
-type SquareProps = {
-  value: string;
-};
-
 const Square = () => {
   const [value, setValue] = useState<React.ReactNode>(null);
   const handleClick = () => {
@@ -17,6 +13,9 @@ const Square = () => {
     </button>
   );
 };
+
+// https://react.dev/learn/tutorial-tic-tac-toe
+// Completing the game
 
 const Board = () => {
   return (
