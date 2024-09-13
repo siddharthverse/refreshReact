@@ -32,5 +32,6 @@ jobs:
         run: |
           echo "$SSH_PRIVATE_KEY" | tr -d '\r' > private_key
           chmod 600 private_key
+          mkdir -p ~/.ssh
           ssh-keyscan -H $VM_HOST >> ~/.ssh/known_hosts
           rsync -avz -e "ssh -i private_key -o StrictHostKeyChecking=no" dist/ $VM_USER@$VM_HOST:/var/www/html/
