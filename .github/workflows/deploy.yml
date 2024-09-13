@@ -30,6 +30,7 @@ jobs:
           VM_HOST: ${{ secrets.VM_HOST }}
           VM_USER: ${{ secrets.VM_USER }}
         run: |
-          echo "$SSH_PRIVATE_KEY" > private_key
+          echo "$SSH_PRIVATE_KEY" | tr -d '\r' > private_key
           chmod 600 private_key
+          ssh-keyscan -H $VM_HOST >> ~/.ssh/known_hosts
           rsync -avz -e "ssh -i private_key -o StrictHostKeyChecking=no" dist/ $VM_USER@$VM_HOST:/var/www/html/
