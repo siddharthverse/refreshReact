@@ -5,6 +5,7 @@ const Navbar = () => {
       <div className="links">
         <a href="/">Home</a>
         <a href="/jobs">Browse Jobs</a>
+        <p>To do git alias and ssh alias, multi pub key</p>
       </div>
     </nav>
   );
