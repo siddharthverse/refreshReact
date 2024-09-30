@@ -67,7 +67,7 @@ const Board = () => {
   );
 };
 
-const calculateWinningCombo = (squares: any) => {
+const calculateWinningCombo = (squares: Array<string | null>) => {
   const winningCombos = [
     [0, 1, 2],
     [3, 4, 5],
