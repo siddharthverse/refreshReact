@@ -22,10 +22,8 @@ const Board = () => {
   const [xIsNext, setXIsNext] = useState(true);
 
   // handle board click
-  function handleClick(i: number) {
-    console.log(`board handle click SQUARE ${i}`);
-    if (square[i] || calculateWinner(i)) {
-      console.log('Same click or maybe game over');
+  const handleBoardClick = (i: number) => {
+    if (square[i] || calculateWinningCombo(square)) {
       return;
     }
 
@@ -38,40 +36,39 @@ const Board = () => {
     }
     setXIsNext(!xIsNext);
     setSquare(nextSquares);
-  }
+  };
 
-  const winner = calculateWinner(square);
+  const winner = calculateWinningCombo(square);
   let status;
   if (winner) {
-    status = `Winner is: ${winner}`;
+    status = `Winner is ${winner}`;
   } else {
-    status = `Next player: ${xIsNext ? 'X' : 'O'}`;
+    status = `Next player is ${xIsNext ? 'X' : 'O'}`;
   }
-
   return (
     <>
       <div className="status">{status}</div>
       <div className="board-row">
-        <Square value={square[0]} onSquareClick={() => handleClick(0)} />
-        <Square value={square[1]} onSquareClick={() => handleClick(1)} />
-        <Square value={square[2]} onSquareClick={() => handleClick(2)} />
+        <Square value={square[0]} onSquareClick={() => handleBoardClick(0)} />
+        <Square value={square[1]} onSquareClick={() => handleBoardClick(1)} />
+        <Square value={square[2]} onSquareClick={() => handleBoardClick(2)} />
       </div>
       <div className="board-row">
-        <Square value={square[3]} onSquareClick={() => handleClick(3)} />
-        <Square value={square[4]} onSquareClick={() => handleClick(4)} />
-        <Square value={square[5]} onSquareClick={() => handleClick(5)} />
+        <Square value={square[3]} onSquareClick={() => handleBoardClick(3)} />
+        <Square value={square[4]} onSquareClick={() => handleBoardClick(4)} />
+        <Square value={square[5]} onSquareClick={() => handleBoardClick(5)} />
       </div>
       <div className="board-row">
-        <Square value={square[6]} onSquareClick={() => handleClick(6)} />
-        <Square value={square[7]} onSquareClick={() => handleClick(7)} />
-        <Square value={square[8]} onSquareClick={() => handleClick(8)} />
+        <Square value={square[6]} onSquareClick={() => handleBoardClick(6)} />
+        <Square value={square[7]} onSquareClick={() => handleBoardClick(7)} />
+        <Square value={square[8]} onSquareClick={() => handleBoardClick(8)} />
       </div>
     </>
   );
 };
 
-const calculateWinner = (squares: any) => {
-  const lines = [
+const calculateWinningCombo = (squares: any) => {
+  const winningCombos = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -81,8 +78,8 @@ const calculateWinner = (squares: any) => {
     [0, 4, 8],
     [2, 4, 6],
   ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
+  for (let i = 0; i < winningCombos.length; i++) {
+    const [a, b, c] = winningCombos[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return squares[a];
     }
